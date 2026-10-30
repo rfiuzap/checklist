@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>P-Mentor Checklist</title>
+<meta name="description" content="Checklists de emergência e normais do Tecnam P-Mentor (AFM E01-R08). Funciona offline.">
+<meta name="theme-color" content="#0b0f14">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="P-Mentor">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-row">
+    <a class="brand" href="#/" aria-label="Início">
+      <span class="brand-mark">P</span>
+      <span class="brand-text"><b>P-MENTOR</b><small>AFM E01-R08</small></span>
+    </a>
+    <div class="spacer"></div>
+    <button id="btn-speeds" class="chip" type="button">V<sub>GLIDE</sub> 70</button>
+    <button id="btn-awake" class="icon-btn" type="button" aria-pressed="false" title="Manter tela ligada">☀</button>
+    <button id="btn-theme" class="icon-btn" type="button" title="Tema">◐</button>
+  </div>
+  <nav class="tabs" id="tabs" role="tablist">
+    <a role="tab" href="#/e" data-tab="e" class="tab tab-e">EMERGÊNCIA</a>
+    <a role="tab" href="#/n" data-tab="n" class="tab tab-n">NORMAL</a>
+  </nav>
+</header>
+
+<main id="view" tabindex="-1"></main>
+
+<dialog id="dlg-speeds">
+  <form method="dialog">
+    <h2>Velocidades de referência</h2>
+    <div id="speeds-body"></div>
+    <button class="btn">Fechar</button>
+  </form>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:1rem">Este aplicativo requer JavaScript.</p></noscript>
+<script src="js/app.js"></script>
+</body>
+</html>

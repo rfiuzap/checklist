@@ -1,0 +1,937 @@
+{
+  "meta": {
+    "aircraft": "Tecnam P-Mentor",
+    "source": "AFM P-Mentor - E01-R08 (Sections 3 and 4)",
+    "version": 1,
+    "notes": "Texto em inglês conforme o AFM. Campo m=1 marca itens 'boxed' (memory items) do AFM. Campo c = condição/subtítulo, n = nota (t: note|caution|warning). A numeração de passos é regenerada pelo app (o AFM tem erros de numeração em 3.1, 7.1 e 8.1.2)."
+  },
+  "speeds": [
+    {"k": "VGLIDE (best glide)", "a": "70 KIAS", "m": 1},
+    {"k": "VR (rotation, flaps T/O)", "a": "53 KIAS"},
+    {"k": "VX (flaps UP)", "a": "65 KIAS"},
+    {"k": "VY (flaps UP)", "a": "70 KIAS"},
+    {"k": "VX (flaps T/O)", "a": "56 KIAS"},
+    {"k": "VY (flaps T/O)", "a": "61 KIAS"},
+    {"k": "VREF no flaps", "a": "65 KIAS"},
+    {"k": "VREF flaps T/O", "a": "61 KIAS"},
+    {"k": "VREF flaps LDG", "a": "58 KIAS"},
+    {"k": "VA (manoeuvring)", "a": "102 KIAS"},
+    {"k": "VNE", "a": "135 KIAS"},
+    {"k": "Rescue system max deploy speed", "a": "135 KIAS"},
+    {"k": "Flaps T/O max (VFE)", "a": "106 KIAS"},
+    {"k": "Flaps LDG max (VFE)", "a": "96 KIAS"}
+  ],
+  "categories": [
+    {"id": "engine", "name": "Engine / Powerplant", "icon": "engine"},
+    {"id": "fire", "name": "Smoke & Fire", "icon": "fire"},
+    {"id": "elec", "name": "Electrical", "icon": "bolt"},
+    {"id": "fuel", "name": "Fuel", "icon": "fuel"},
+    {"id": "ctrl", "name": "Flight Controls / Envelope", "icon": "wing"},
+    {"id": "land", "name": "Forced Landing / Evacuation", "icon": "land"},
+    {"id": "avio", "name": "Avionics / Pitot-Static", "icon": "screen"}
+  ],
+  "emergency": [
+    {
+      "id": "e-7-1", "ref": "3.7.1", "t": "Engine Failure during Take-off Run", "cat": "engine", "sev": "warning",
+      "kw": ["engine failure", "takeoff", "take-off run", "abort", "falha motor", "decolagem", "arremetida", "rejeitar"],
+      "s": [
+        {"c": "If engine fails before rotation: ABORT TAKE OFF"},
+        {"k": "Throttle Lever", "a": "IDLE", "m": 1},
+        {"k": "Brakes", "a": "AS REQUIRED", "m": 1},
+        {"c": "With aircraft stopped"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Parking Brake", "a": "ENGAGED"},
+        {"k": "Aircraft Evacuation", "a": "PERFORM if necessary"}
+      ]
+    },
+    {
+      "id": "e-7-2", "ref": "3.7.2", "t": "Engine Failure after Take-off", "cat": "engine", "sev": "warning",
+      "kw": ["engine failure", "after takeoff", "low altitude", "glide", "falha motor", "pouso forçado", "depois decolagem"],
+      "s": [
+        {"c": "If engine fails immediately after becoming airborne: abort on the runway if possible"},
+        {"c": "In case low altitude precludes a runway stop and/or engine restart"},
+        {"k": "Establish a glide attitude", "a": "", "m": 1},
+        {"k": "Find a suitable place on the ground to land safely", "a": "", "m": 1},
+        {"n": "The landing should be planned straight ahead with only small changes in direction not exceeding 45° to the left and 45° to the right. Any turn would reduce the glide performance.", "t": "caution"},
+        {"k": "Throttle Lever", "a": "IDLE", "m": 1},
+        {"k": "Brakes", "a": "As required"},
+        {"c": "With aircraft stopped"},
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Parking Brake", "a": "ENGAGED"},
+        {"k": "Aircraft Evacuation", "a": "PERFORM if necessary"}
+      ]
+    },
+    {
+      "id": "e-9", "ref": "3.9", "t": "In-flight Engine Restart", "cat": "engine", "sev": "warning",
+      "kw": ["restart", "engine restart", "relight", "windmilling", "reacender", "partida em voo", "starter"],
+      "s": [
+        {"n": "Restart can be performed in the whole envelope using the starter, even if the propeller is windmilling. The propeller normally continues to turn as long as airspeed is above 60 KIAS. If the propeller stops at 60 KCAS or more, investigate the reason before attempting a restart. If engine or propeller jamming is suspected, do not use the starter.", "t": "note"},
+        {"k": "Master switch", "a": "CHECK ON"},
+        {"k": "Propeller Lever", "a": "FULL FWD"},
+        {"k": "Throttle Lever", "a": "1-2 cm above IDLE"},
+        {"k": "Engine Alternate Air", "a": "OPEN"},
+        {"k": "Fuel quantity indicator", "a": "CHECK"},
+        {"k": "Fuel Selector valve", "a": "SWITCH TANK (if not empty)"},
+        {"k": "Fuel Pumps", "a": "BOTH ON"},
+        {"k": "Lane A & B Switches", "a": "CHECK ON"},
+        {"c": "If propeller is windmilling"},
+        {"k": "Backup Battery Switches", "a": "ON"},
+        {"c": "If propeller is not windmilling"},
+        {"k": "Backup Battery Switches", "a": "ON"},
+        {"k": "Starter", "a": "PRESS THE BUTTON and RELEASE when above [AFM text incomplete: value missing]"},
+        {"c": "In case of unsuccessful engine restart"},
+        {"k": "Engine", "a": "SECURE"},
+        {"k": "Land as soon as possible applying Forced landing procedure (§16.1)", "a": ""},
+        {"c": "In case of successful engine restart"},
+        {"k": "Throttle Lever", "a": "AS REQUIRED"},
+        {"k": "Engine Parameters", "a": "CHECK"}
+      ]
+    },
+    {
+      "id": "e-5", "ref": "3.5", "t": "Engine Securing (in flight)", "cat": "engine", "sev": "warning",
+      "kw": ["engine securing", "shutdown", "shut down", "secure engine", "cortar motor", "desligar motor"],
+      "s": [
+        {"c": "Procedure applicable to shut down the engine in flight"},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Fuel Selector valve", "a": "OFF"}
+      ]
+    },
+    {
+      "id": "e-7-3", "ref": "3.7.3", "t": "Propeller Overspeed", "cat": "engine", "sev": "caution",
+      "kw": ["propeller overspeed", "overspeed", "rpm", "sobrevelocidade", "hélice"],
+      "s": [
+        {"k": "Throttle Lever", "a": "REDUCE"},
+        {"k": "Propeller Lever", "a": "REDUCE"},
+        {"k": "Airspeed", "a": "REDUCE to prevent propeller overspeed"},
+        {"k": "RPM indicator", "a": "CHECK"},
+        {"c": "If it is not possible to decrease propeller RPM"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""},
+        {"n": "Maximum propeller RPM exceedance may cause engine components damage. Apply caution while accelerating with power lever close to max and monitor RPM; RPM overspeed shall be prevented by retarding thrust lever.", "t": "caution"}
+      ]
+    },
+    {
+      "id": "e-7-4", "ref": "3.7.4.1", "t": "High Coolant Temperature (CT)", "cat": "engine", "sev": "caution",
+      "kw": ["coolant", "ct", "high temperature", "temperatura", "refrigeração", "overheat", "superaquecimento"],
+      "s": [
+        {"c": "If CT exceeds maximum limit"},
+        {"k": "Throttle lever", "a": "REDUCE as practical"},
+        {"k": "Airspeed", "a": "INCREASE"},
+        {"k": "CT", "a": "Verify decreasing"},
+        {"c": "If CT stabilizes in the green arc"},
+        {"k": "Continue flight", "a": ""},
+        {"c": "If CT continues to rise and engine shows roughness"},
+        {"k": "Land as soon as possible applying forced landing procedures (§16)", "a": ""},
+        {"k": "Expect an engine failure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-7-5", "ref": "3.7.5.1", "t": "High EGT", "cat": "engine", "sev": "caution",
+      "kw": ["egt", "exhaust gas", "temperatura escape", "gases de escape"],
+      "s": [
+        {"k": "Throttle Lever", "a": "REDUCE as practical"},
+        {"k": "Airspeed", "a": "INCREASE"},
+        {"k": "Land as soon as practical", "a": ""}
+      ]
+    },
+    {
+      "id": "e-7-6", "ref": "3.7.6.1", "t": "High MAT (Manifold Air Temp)", "cat": "engine", "sev": "caution",
+      "kw": ["mat", "manifold air", "alternate air", "temperatura admissão"],
+      "s": [
+        {"k": "Alternate Air", "a": "CHECK CLOSED"},
+        {"k": "Propeller Lever", "a": "AS REQUIRED"},
+        {"k": "Throttle Lever", "a": "FULL FWD"},
+        {"k": "Airspeed", "a": "INCREASE"}
+      ]
+    },
+    {
+      "id": "e-7-7", "ref": "3.7.7.1", "t": "High Oil Temperature", "cat": "engine", "sev": "caution",
+      "kw": ["oil temperature", "oil temp", "temperatura óleo", "óleo", "high oil"],
+      "s": [
+        {"n": "Maximum oil temperature exceedance can be the final effect of different causes: excessive friction between moving engine components, oil leakage from the circuit (with related pressure reduction), etc.", "t": "note"},
+        {"k": "Throttle Lever", "a": "REDUCE"},
+        {"k": "OIL TEMP", "a": "CHECK"},
+        {"c": "If oil temperature does not decrease"},
+        {"k": "Airspeed", "a": "INCREASE"},
+        {"k": "OIL TEMP", "a": "CHECK"},
+        {"c": "If oil temperature comes back within limits"},
+        {"k": "Land as soon as practical", "a": ""},
+        {"c": "If oil temperature does not come back within limits"},
+        {"k": "Land as soon as practical with engine set to the minimum necessary power", "a": ""},
+        {"k": "Be prepared for an emergency landing and expect an engine failure", "a": ""},
+        {"c": "If engine roughness, vibrations, erratic behaviour or high CT is detected"},
+        {"k": "ENGINE", "a": "SECURE"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-7-8-1", "ref": "3.7.8.1", "t": "Low Oil Pressure", "cat": "engine", "sev": "caution",
+      "kw": ["oil pressure", "low oil", "pressão óleo", "baixa pressão"],
+      "s": [
+        {"c": "If the oil pressure is under the lower limit"},
+        {"k": "Throttle Lever", "a": "REDUCE to minimum practical"},
+        {"k": "OIL TEMP", "a": "CHECK within limits"},
+        {"k": "OIL PRESS", "a": "CHECK"},
+        {"c": "If oil pressure does not increase and temperature remains within limits"},
+        {"k": "OIL and CT", "a": "CHECK"},
+        {"k": "Land as soon as practical", "a": ""},
+        {"c": "If oil pressure does not increase and temperature exceeds limits"},
+        {"k": "ENGINE", "a": "SECURE"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-7-8-2", "ref": "3.7.8.2", "t": "High Oil Pressure", "cat": "engine", "sev": "caution",
+      "kw": ["oil pressure", "high oil pressure", "pressão óleo alta", "alta pressão"],
+      "s": [
+        {"c": "If the oil pressure exceeds upper limit"},
+        {"k": "Thrust Lever", "a": "REDUCE"},
+        {"k": "OIL PRESS", "a": "CHECK"},
+        {"c": "If oil pressure does not decrease"},
+        {"k": "ENGINE", "a": "SECURE"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-10", "ref": "3.10", "t": "LANE A / LANE B Warning Light", "cat": "engine", "sev": "caution",
+      "kw": ["lane a", "lane b", "ecu", "fadec", "warning light", "luz lane", "ignição"],
+      "s": [
+        {"k": "Land as soon as practical", "a": ""},
+        {"n": "The Lane warning lights can flash or be permanently illuminated depending on the nature of the fault. If a warning indicator remains on permanently, an error of higher severity (Failure) has been detected by the ECU internal tests. The ECU continues to operate in an alternative control mode, transferring control of ignition and injection to the error-free Lane. Both regular and alternative modes can deliver full engine power; the engine is operated in power-mode with increased fuel consumption.", "t": "note"},
+        {"n": "Refer to Rotax Operator and Maintenance Manuals for troubleshooting.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-11-1", "ref": "3.11.1", "t": "Engine Fire on the Ground", "cat": "fire", "sev": "warning",
+      "kw": ["fire", "engine fire", "ground", "fogo", "incêndio", "solo"],
+      "s": [
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Cabin heat and defrost", "a": "OFF"},
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Parking Brake", "a": "LOCK"},
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"k": "Aircraft Evacuation", "a": "PERFORM"}
+      ]
+    },
+    {
+      "id": "e-11-2", "ref": "3.11.2", "t": "Engine Fire during Take-off", "cat": "fire", "sev": "warning",
+      "kw": ["fire", "engine fire", "takeoff", "take-off", "abort", "fogo", "incêndio", "decolagem"],
+      "s": [
+        {"c": "If engine fails before rotation: ABORT TAKE-OFF"},
+        {"k": "Throttle Lever", "a": "OFF", "m": 1},
+        {"k": "Lane A & B Switches", "a": "OFF", "m": 1},
+        {"k": "Brakes", "a": "As required", "m": 1},
+        {"c": "With the aircraft under control"},
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Cabin heat", "a": "OFF"},
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Parking Brake", "a": "ENGAGED"},
+        {"k": "Aircraft Evacuation", "a": "PERFORM"}
+      ]
+    },
+    {
+      "id": "e-11-3", "ref": "3.11.3", "t": "Engine Fire in Flight", "cat": "fire", "sev": "warning",
+      "kw": ["fire", "engine fire", "flight", "in flight", "fogo", "incêndio", "voo"],
+      "s": [
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Cabin heat and defrost", "a": "OFF"},
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-11-4", "ref": "3.11.4", "t": "Electrical Smoke/Fire in Cabin — Ground", "cat": "fire", "sev": "warning",
+      "kw": ["smoke", "fire", "electrical", "cabin", "ground", "fumaça", "fogo", "cabine", "elétrico"],
+      "s": [
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Cabin heat and defrost", "a": "OFF"},
+        {"k": "Cabin Ventilation", "a": "OPEN"},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"c": "With propeller stopped, evacuate the aircraft"}
+      ]
+    },
+    {
+      "id": "e-11-5", "ref": "3.11.5", "t": "Electrical Smoke/Fire in Cabin — Flight", "cat": "fire", "sev": "warning",
+      "kw": ["smoke", "fire", "electrical", "cabin", "flight", "fumaça", "fogo", "cabine", "voo", "extinguisher", "extintor"],
+      "s": [
+        {"k": "Cabin heat", "a": "OFF"},
+        {"k": "Cabin ventilation", "a": "OPEN"},
+        {"k": "In case of fire, direct the fire extinguisher toward the base of flame", "a": ""},
+        {"c": "Initiate an emergency descent"},
+        {"k": "Flaps", "a": "UP"},
+        {"k": "Throttle lever", "a": "IDLE"},
+        {"k": "Airspeed", "a": "as required"},
+        {"c": "If smoke persists"},
+        {"k": "Master switch", "a": "OFF"},
+        {"k": "Load Shedding", "a": "Switch OFF all non-essential electrical loads"},
+        {"k": "Land as soon as possible", "a": ""},
+        {"n": "Turn on electrical equipment required to continue flight depending on the situation and land as soon as possible.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-2-1", "ref": "3.2.1", "t": "Low Volt (ESS VOLT)", "cat": "elec", "sev": "caution",
+      "kw": ["low volt", "ess volt", "voltage", "essential voltage", "tensão", "baixa tensão", "alternador", "alternator"],
+      "s": [
+        {"n": "Annunciator: LOW VOLTAGE light / Annunciation window: ESS VOLT (Essential Bus < 12 V).", "t": "note"},
+        {"k": "Circuit breaker(s)", "a": "CHECK"},
+        {"k": "Avionic Master", "a": "OFF"},
+        {"k": "Pitot heat switch", "a": "OFF"},
+        {"k": "Load Shedding", "a": "Switch OFF non-essential electrical loads (Strobe lights OFF)"},
+        {"k": "Land as soon as practical", "a": ""},
+        {"n": "The ECU System requires an electrical power source for its operation. If one alternator fails, continued engine operation is assured by the other alternator. Therefore, the airframe loads are supplied by battery.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-2-2", "ref": "3.2.2", "t": "Generator (Alternator) Failure", "cat": "elec", "sev": "caution",
+      "kw": ["generator", "alternator", "gerador", "alternador", "ammeter", "low volt"],
+      "s": [
+        {"n": "Detected by LOW VOLT warning light, ESS VOLT CAS message and positive battery ammeter. With Generator A failure, Lane A and Lane B warning lights flash.", "t": "note"},
+        {"k": "Load Shedding", "a": "Switch OFF non-essential electrical loads (Pitot Heat and Strobe lights OFF)"},
+        {"k": "Land as soon as practical", "a": ""},
+        {"n": "In case of failure of the remaining generator expect imminent engine stoppage.", "t": "warning"},
+        {"n": "If any generator fails, the airframe electrical system is automatically cut off from the generator. The battery is the remaining source for the airframe electrical system for a minimum of 30 minutes. Additional load shedding, according to flight conditions, could extend battery capacity.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-2-3", "ref": "3.2.3", "t": "BCK BATT Light", "cat": "elec", "sev": "advisory",
+      "kw": ["bck batt", "backup battery", "bateria reserva", "backup"],
+      "s": [
+        {"k": "Engine Parameters", "a": "CHECK"},
+        {"k": "BCK BATT Switch", "a": "SET OFF IF NOT REQUIRED"},
+        {"n": "The BCK BATT switch is required to be set ON during in-flight engine restart and in case of both alternators failure. The BCK BATT light is illuminated when the switch is ON; the ECU system is then powered by the aircraft battery.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-2-4", "ref": "3.2.4", "t": "Loss of Essential Bus", "cat": "elec", "sev": "caution",
+      "kw": ["essential bus", "loss of bus", "barramento essencial", "perda"],
+      "s": [
+        {"n": "Recognized by simultaneous loss of: PITOT HEAT, PFD, EIS, COM 1, ADAHRS, NAV1/GPS, ANNUNC PANEL, LND LIGHT, BUFF BATTERY, G3X POWER 2, STROBE LIGHT, STALL, FLAP, GDA 29, GMU.", "t": "note"},
+        {"n": "Change or maintain flight conditions according to available equipment. Refer to standby instrument for primary flight information. Audio panel is usable via MFD. Strobe and landing lights are lost; NAV and taxi lights are still available.", "t": "note"},
+        {"k": "Land as soon as practical", "a": ""}
+      ]
+    },
+    {
+      "id": "e-2-5", "ref": "3.2.5", "t": "Loss of Main Bus", "cat": "elec", "sev": "caution",
+      "kw": ["main bus", "loss of bus", "barramento principal", "perda"],
+      "s": [
+        {"n": "Recognized by simultaneous loss of: AUDIO PANEL, XPDR, NAV LIGHT, TAXI LIGHT, SOCKET 12V, STDBY INSTR, INT LIGHT, PITCH TRIM.", "t": "note"},
+        {"n": "Fail-safe operation of G3X Touch allows pilot to transmit and use COM1 using headphones only; speakers will not be available. For night flights all instruments and map lights are lost, but emergency light is still available.", "t": "note"},
+        {"k": "Land as soon as practical", "a": ""}
+      ]
+    },
+    {
+      "id": "e-2-6", "ref": "3.2.6", "t": "Loss of Avionic Bus", "cat": "elec", "sev": "caution",
+      "kw": ["avionic bus", "mfd", "loss of bus", "barramento aviônica", "reversionary"],
+      "s": [
+        {"n": "Recognized by loss of MFD.", "t": "note"},
+        {"k": "Avionic Master switch", "a": "SET OFF"},
+        {"k": "Continue flight with PFD in reversionary mode", "a": ""}
+      ]
+    },
+    {
+      "id": "e-8-1-1", "ref": "3.8.1.1", "t": "Low Fuel Pressure", "cat": "fuel", "sev": "caution",
+      "kw": ["fuel pressure", "low fuel pressure", "pressão combustível", "baixa pressão"],
+      "s": [
+        {"k": "Fuel Pump Switch", "a": "ON"},
+        {"k": "Fuel Qty", "a": "CHECK"},
+        {"k": "Fuel Selector", "a": "CHANGE"},
+        {"c": "If fuel pressure does not increase"},
+        {"k": "Throttle Lever", "a": "REDUCE"},
+        {"k": "Land as soon as possible", "a": ""},
+        {"c": "If engine stops"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-8-1-2", "ref": "3.8.1.2", "t": "High Fuel Pressure", "cat": "fuel", "sev": "caution",
+      "kw": ["fuel pressure", "high fuel pressure", "pressão combustível", "alta pressão"],
+      "s": [
+        {"k": "Fuel Pump Switch", "a": "OFF"},
+        {"k": "Fuel Qty", "a": "CHECK"},
+        {"k": "Fuel Selector", "a": "CHANGE"},
+        {"c": "If fuel pressure does not decrease"},
+        {"k": "Throttle Lever", "a": "REDUCE"},
+        {"k": "Land as soon as possible", "a": ""},
+        {"c": "If engine stops"},
+        {"k": "Land as soon as possible applying Forced landing procedure", "a": ""}
+      ]
+    },
+    {
+      "id": "e-8-2", "ref": "3.8.2", "t": "LH / RH Fuel Level Low", "cat": "fuel", "sev": "caution",
+      "kw": ["fuel level", "low fuel", "fuel quantity", "combustível baixo", "nível", "tank"],
+      "s": [
+        {"n": "Annunciator: LH / RH Fuel Level Low (< 20 L).", "t": "note"},
+        {"c": "If ONE Low Fuel Level Caution Light is illuminated"},
+        {"k": "Fuel Pump", "a": "ON"},
+        {"k": "Opposite Tank Fuel Qty", "a": "CHECK"},
+        {"k": "Fuel Selector", "a": "CHANGE"},
+        {"k": "Engine parameters", "a": "CHECK"},
+        {"c": "If BOTH Low Fuel Level Caution Lights are illuminated"},
+        {"k": "Land as soon as possible", "a": ""},
+        {"n": "Flight plan has to be reviewed according to low fuel level in the tank. Remaining fuel in the tank equals unusable fuel plus fuel required for 30 minutes at 75% MCP.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-12-1a", "ref": "3.12.1", "t": "Pitch Trim Runaway", "cat": "ctrl", "sev": "warning",
+      "kw": ["trim", "runaway", "pitch trim", "compensador", "trim disc"],
+      "s": [
+        {"k": "TRIM DISC switch", "a": "ON"},
+        {"k": "Airspeed", "a": "ADJUST to control aircraft without excessive force"},
+        {"k": "Land aircraft as soon as practical", "a": ""}
+      ]
+    },
+    {
+      "id": "e-12-1b", "ref": "3.12.1", "t": "Pitch Trim Jamming / Inoperative", "cat": "ctrl", "sev": "caution",
+      "kw": ["trim", "jam", "jamming", "inoperative", "pitch trim", "compensador", "travado"],
+      "s": [
+        {"k": "Breaker", "a": "CHECK IN"},
+        {"k": "Airspeed and flaps", "a": "ADJUST to control aircraft without excessive force"},
+        {"k": "Land aircraft as soon as practical", "a": ""}
+      ]
+    },
+    {
+      "id": "e-12-2", "ref": "3.12.2", "t": "Flaps Control Failure", "cat": "ctrl", "sev": "caution",
+      "kw": ["flaps", "flap failure", "stuck", "flap travado", "falha flap", "vref"],
+      "s": [
+        {"k": "Flaps position", "a": "Visually check position"},
+        {"k": "Airspeed", "a": "Maintain according to observed flap position"},
+        {"k": "Flaps position", "a": "Visually check movement while operating the flaps switch in all positions"},
+        {"c": "If flaps are stuck"},
+        {"k": "Consider possible degraded performance", "a": ""},
+        {"n": "If stuck at T/O or LDG consider higher aerodynamic drag, decreased specific range and 106 or 96 KIAS VMAX according to actual flap setting. If flap position cannot be determined exactly, observe the lower VFE value.", "t": "note"},
+        {"k": "Plan landing considering the actual flap setting", "a": "VREF: UP 65 / T/O 61 / LDG 58 KIAS"},
+        {"n": "If flaps are stuck UP, plan landing using a flat approach and use power lever to control airspeed and rate of descent.", "t": "note"},
+        {"c": "If flaps are NOT stuck"},
+        {"k": "Consider flaps indicator inoperative", "a": ""},
+        {"k": "Flaps switch", "a": "As required"},
+        {"k": "Flaps position", "a": "CHECK visually"}
+      ]
+    },
+    {
+      "id": "e-13", "ref": "3.13", "t": "Recovery from Unintentional Spin", "cat": "ctrl", "sev": "warning",
+      "kw": ["spin", "parafuso", "autorrotação", "stall", "recovery", "recuperação"],
+      "s": [
+        {"c": "If unintentional spin occurs"},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Ailerons", "a": "Neutral"},
+        {"k": "Rudder", "a": "Fully opposite to the direction of spin"},
+        {"k": "Control Stick", "a": "Forward"},
+        {"k": "Flap", "a": "UP"},
+        {"c": "When rotation stops"},
+        {"k": "Rudder", "a": "NEUTRAL"},
+        {"k": "Attitude", "a": "RECOVER promptly but smoothly, averting speed close to / in excess of VNE"},
+        {"k": "Throttle Lever", "a": "As required"},
+        {"n": "Keep full rudder against rotation until spin has stopped. One complete turn and recovery takes about 800 to 1000 ft altitude loss.", "t": "warning"}
+      ]
+    },
+    {
+      "id": "e-14", "ref": "3.14", "t": "Unintentional Flight into Icing", "cat": "ctrl", "sev": "caution",
+      "kw": ["icing", "ice", "gelo", "formação de gelo", "pitot heat"],
+      "s": [
+        {"k": "Pitot heat", "a": "CHECK ON"},
+        {"k": "Engine Alternate Air", "a": "CHECK OPEN"},
+        {"k": "Fly immediately away from icing conditions", "a": "(change altitude and direction; out and below clouds, visible moisture, precipitation)"},
+        {"k": "Control surfaces", "a": "MOVE continuously to avoid locking"},
+        {"k": "Throttle Lever", "a": "INCREASE to prevent ice build-up on propeller blades"},
+        {"n": "With ice build-up on wing leading edges, stall speed increases and stall may become asymmetric. Stabilator ice accretion may reduce its efficiency, leading to lack of pitch control and loss of control.", "t": "warning"}
+      ]
+    },
+    {
+      "id": "e-16-1", "ref": "3.16.1", "t": "Forced Landing without Engine Power", "cat": "land", "sev": "warning",
+      "kw": ["forced landing", "engine out", "dead stick", "glide", "mayday", "pouso forçado", "sem motor", "planeio"],
+      "s": [
+        {"c": "Preparation"},
+        {"k": "Flaps", "a": "UP"},
+        {"k": "Airspeed", "a": "ESTABLISH VGLIDE (70 KIAS)", "m": 1},
+        {"n": "Glide ratio is about 9.7: in zero wind, about 1.6 NM per 1000 ft. With propeller windmilling glide ratio is about 9.5: about 1.5 NM per 1000 ft.", "t": "note"},
+        {"k": "Radio", "a": "Transmit MAYDAY giving location and intentions"},
+        {"k": "Transponder", "a": "Set EMERGENCY CODE (7700)"},
+        {"k": "If off airport, ELT", "a": "ON"},
+        {"k": "Find a suitable place to land safely", "a": ""},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Fuel Selector valve", "a": "OFF"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Seat Belts", "a": "Tightly FASTENED"},
+        {"c": "When landing is assured"},
+        {"k": "Flaps", "a": "As required"},
+        {"k": "Landing Gear control knob*", "a": "DOWN: check three green lights ON"},
+        {"k": "Master switch", "a": "OFF"},
+        {"n": "Be prepared for aircraft evacuation.  *Applicable for aircraft embodying MOD2002/245 LG extraction simulation.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-16-2", "ref": "3.16.2", "t": "Power-On Forced Landing", "cat": "land", "sev": "warning",
+      "kw": ["forced landing", "power on", "precautionary", "pouso forçado", "com motor", "precaução"],
+      "s": [
+        {"k": "Flaps", "a": "UP"},
+        {"k": "Airspeed", "a": "ESTABLISH VGLIDE (70 KIAS)"},
+        {"k": "Find a suitable place to land safely", "a": ""},
+        {"k": "Safety Belts", "a": "Tightly FASTENED"},
+        {"c": "When landing is assured"},
+        {"k": "Flaps", "a": "As necessary"},
+        {"k": "Landing Gear control knob*", "a": "DOWN: check three green lights ON"},
+        {"k": "Fuel selector valve", "a": "OFF"},
+        {"k": "Main Fuel Pump & Fuel Pump Switches", "a": "OFF"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Master switch", "a": "OFF"},
+        {"n": "Be prepared for aircraft evacuation.  *Applicable for aircraft embodying MOD2002/245 LG extraction simulation.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-15", "ref": "3.15", "t": "Rescue System (BRS) Deployment", "cat": "land", "sev": "warning",
+      "kw": ["rescue", "parachute", "brs", "paraquedas", "recovery system", "chute"],
+      "s": [
+        {"n": "Deploy in the event of a life-threatening emergency where parachute activation is safer than continued flight and landing. Full deployment takes about 4 seconds. Use only when any other means of handling the emergency would not protect the occupants from serious injury. Greater deployment altitude yields better chances of success.", "t": "caution"},
+        {"k": "Airspeed", "a": "MINIMUM POSSIBLE (MAX 135 kts)"},
+        {"k": "Pull activation handle", "a": "firmly and to end of travel"},
+        {"c": "After deployment"},
+        {"k": "Lane A & B", "a": "SET OFF"},
+        {"k": "Fuel Selector", "a": "SET OFF"},
+        {"k": "Master", "a": "SET OFF"},
+        {"k": "Seat belts and harness", "a": "TIGHTEN"},
+        {"k": "Assume emergency landing body position before impact", "a": ""},
+        {"k": "Evacuation", "a": "PERFORM"}
+      ]
+    },
+    {
+      "id": "e-6", "ref": "3.6", "t": "Aircraft Evacuation", "cat": "land", "sev": "warning",
+      "kw": ["evacuation", "egress", "evacuar", "abandono", "escape"],
+      "s": [
+        {"c": "With the engine secured and propeller stopped"},
+        {"k": "Parking brakes", "a": "LOCK"},
+        {"k": "Seat Belts", "a": "UNSTRAP"},
+        {"k": "Headphones", "a": "REMOVE"},
+        {"k": "Canopy", "a": "OPEN"},
+        {"k": "Master switch", "a": "OFF"},
+        {"k": "Escape away from flames / hot engine compartment / spilling fuel tanks / hot brakes", "a": ""}
+      ]
+    },
+    {
+      "id": "e-17", "ref": "3.17", "t": "Landing Gear Failures*", "cat": "land", "sev": "advisory",
+      "kw": ["landing gear", "gear", "trem", "extension", "retraction", "train de pouso"],
+      "s": [
+        {"n": "*Applicable for aircraft embodying MOD2002/245 LG extraction simulation.", "t": "note"},
+        {"c": "Failed extension (green lights not illuminated)"},
+        {"k": "Continue Flight", "a": ""},
+        {"c": "Failed retraction (green or red light illuminated)"},
+        {"k": "Continue Flight", "a": ""},
+        {"c": "Unintentional extension (green or red light illuminated in flight)"},
+        {"k": "Continue Flight", "a": ""}
+      ]
+    },
+    {
+      "id": "e-3-1", "ref": "3.3.1", "t": "Pitot Heating System Failure", "cat": "avio", "sev": "caution",
+      "kw": ["pitot", "pitot heat", "aquecimento pitot", "airspeed"],
+      "s": [
+        {"n": "Green PITOT HEAT ON = system working. Amber PITOT HEAT caution light ON with pitot heat switch ON = system NOT functioning properly.", "t": "note"},
+        {"k": "Pitot heat switch", "a": "OFF"},
+        {"k": "Pitot heat circuit breaker", "a": "CHECK IN"},
+        {"k": "Pitot heat switch", "a": "ON"},
+        {"k": "PITOT HEAT caution light", "a": "CHECK"}
+      ]
+    },
+    {
+      "id": "e-3-2", "ref": "3.3.2", "t": "Static Source Malfunction", "cat": "avio", "sev": "caution",
+      "kw": ["static", "alternate static", "airspeed fluctuation", "altitude fluctuation", "estática", "fonte estática"],
+      "s": [
+        {"c": "If static source malfunction is suspected and/or abnormal fluctuations of IAS/altitude are detected in relation to yawing"},
+        {"k": "Alternate static port", "a": "OPEN"},
+        {"k": "Cabin heating", "a": "OFF"},
+        {"n": "The alternate source valve is on the right side of the central pedestal. Operation of the alternate static air requires that the cabin air system be switched off in order not to affect the air pressure measurement.", "t": "note"}
+      ]
+    },
+    {
+      "id": "e-4-2", "ref": "3.4.2", "t": "AHRS Failure", "cat": "avio", "sev": "caution",
+      "kw": ["ahrs", "attitude", "heading", "atitude", "proa", "red x"],
+      "s": [
+        {"n": "CAS: AHRS FAIL. Display not receiving input from AHRS: attitude and heading lost (large red X).", "t": "note"},
+        {"k": "Revert to standby and magnetic compass instruments", "a": ""}
+      ]
+    },
+    {
+      "id": "e-4-3", "ref": "3.4.3", "t": "ADC Failure", "cat": "avio", "sev": "caution",
+      "kw": ["adc", "air data", "airspeed", "altitude", "vertical speed", "velocidade", "altitude"],
+      "s": [
+        {"n": "CAS: ADC FAIL. Airspeed, altitude and vertical speed lost (large red X).", "t": "note"},
+        {"k": "Revert to standby instrument", "a": ""}
+      ]
+    },
+    {
+      "id": "e-4-4", "ref": "3.4.4", "t": "EIS Failure", "cat": "avio", "sev": "caution",
+      "kw": ["eis", "engine instrument", "instrumentos motor", "engine display"],
+      "s": [
+        {"n": "CAS: EIS FAIL. All engine information lost (large red X on engine display fields).", "t": "note"},
+        {"k": "Land as soon as possible", "a": ""}
+      ]
+    },
+    {
+      "id": "e-4-5", "ref": "3.4.5–9", "t": "Loss of Airspeed / Attitude / Altitude / VS / Heading", "cat": "avio", "sev": "caution",
+      "kw": ["airspeed fail", "attitude fail", "altitude fail", "vert speed fail", "hdg", "red x", "perda indicação"],
+      "s": [
+        {"c": "AIRSPEED FAIL / ATTITUDE FAIL / ALTITUDE FAIL / VERT SPEED FAIL (red X on display field)"},
+        {"k": "Revert to standby instrument", "a": ""},
+        {"c": "HDG (red X) — no valid heading from AHRS"},
+        {"k": "Revert to magnetic compass", "a": ""}
+      ]
+    },
+    {
+      "id": "e-4-10", "ref": "3.4.10", "t": "Garmin GDU(s) Failure", "cat": "avio", "sev": "advisory",
+      "kw": ["gdu", "display", "g3x", "reversionary", "tela", "garmin"],
+      "s": [
+        {"c": "One GDU failure"},
+        {"n": "G3X Touch automatically switches to reversionary mode: all important flight information is shown on the remaining display in split-screen. Fully automatic; no pilot action required.", "t": "note"},
+        {"c": "Both GDU failure"},
+        {"k": "Revert to standby instrument", "a": ""}
+      ]
+    },
+    {
+      "id": "e-4-11", "ref": "3.4.11", "t": "COM Failure", "cat": "avio", "sev": "caution",
+      "kw": ["com", "radio", "comm failure", "7600", "falha rádio", "comunicação"],
+      "s": [
+        {"c": "Complete communication failure and no other COM source available"},
+        {"k": "Transponder", "a": "SQUAWK 7600"},
+        {"k": "Land as soon as possible", "a": ""}
+      ]
+    },
+    {
+      "id": "e-4-12", "ref": "3.4.12", "t": "NAV / GPS Failure", "cat": "avio", "sev": "caution",
+      "kw": ["nav", "gps", "navigation", "navegação", "missed approach", "g3x gps"],
+      "s": [
+        {"n": "Try to inform ATC of emergency conditions and apply COM failure procedure (3.4.11) in addition.", "t": "note"},
+        {"c": "Loss of, or invalid NAV/GPS signal en-route or terminal"},
+        {"k": "Navigation Instrument", "a": "SWITCH to NAV/GPS source available"},
+        {"c": "If G3X Touch internal GPS is the only source available"},
+        {"k": "Report to ATC and continue flight under Visual Flight Rules", "a": ""},
+        {"c": "If on an instrument approach when signal is lost"},
+        {"k": "Missed Approach", "a": "PERFORM"},
+        {"n": "If the system reverts to G3X Touch internal GPS, 'REV' is displayed in the lower left of the HSI and VFR in the lower right of the PFD. The internal GPS flight plan is for VFR use only.", "t": "note"}
+      ]
+    }
+  ],
+  "normal": [
+    {
+      "id": "n-cabin", "ref": "4.3.1", "t": "Cabin Inspection", "phase": "Pre-flight",
+      "kw": ["cabin inspection", "preflight", "pré-voo", "inspeção cabine"],
+      "s": [
+        {"k": "Aircraft documents", "a": "CHECK valid and on board"},
+        {"k": "Weight and balance", "a": "CALCULATE (ref. Section 6) and CHECK within limits"},
+        {"k": "Breakers", "a": "all IN"},
+        {"k": "Safety belts", "a": "CONNECTED to hard points, and CHECK condition"},
+        {"k": "Lane A & B Switches", "a": "OFF"},
+        {"k": "Master switch", "a": "ON"},
+        {"k": "Voltmeters", "a": "CHECK within limits"},
+        {"k": "External Lights", "a": "All ON, CHECK for operation"},
+        {"k": "Pitot", "a": "REMOVE cover"},
+        {"k": "Acoustic stall warning", "a": "CHECK for operation"},
+        {"k": "Pitot heater", "a": "CHECK WARM and SET OFF; CHECK Pitot Heat Light ON"},
+        {"k": "External Lights", "a": "SET OFF"},
+        {"k": "Master switch", "a": "OFF"},
+        {"k": "Baggage", "a": "CHECK: ELT, fire extinguisher, luggage secured with restraint net"}
+      ]
+    },
+    {
+      "id": "n-walk", "ref": "4.3.2", "t": "Aircraft Walk-Around", "phase": "Pre-flight",
+      "kw": ["walk around", "walkaround", "exterior", "inspeção externa", "drain", "dreno"],
+      "s": [
+        {"n": "Visual inspection: check for defects, cracks, detachments, excessive play, unsafe or improper installation and general condition. For control surfaces also check freedom of movement and security. Red lubber lines on bolts and nuts shall be intact. Fuel drainage must be done on a level surface.", "t": "note"},
+        {"k": "A  Left fuel filler cap", "a": "Check fuel level visually; drain left tank (water/contaminants); close cap"},
+        {"k": "B  Pitot tube & static ports (left wing)", "a": "Remove plug; check unobstructed; do not blow inside vents"},
+        {"k": "C  Left leading edge & wing skin", "a": "Visual; Nav/Strobe lights"},
+        {"k": "D  Left aileron, trim tab, hinges", "a": "Visual; free of play/friction; left tank vent unobstructed"},
+        {"k": "E  Left flap and hinges", "a": "Visual"},
+        {"k": "F  Left main landing gear", "a": "Inflation, tire condition, alignment, fuselage skin"},
+        {"k": "G  Horizontal tail and tab", "a": "Visual; free of play/friction"},
+        {"k": "H  Vertical tail, rudder, trim tab", "a": "Visual; free of play/friction; strobe light"},
+        {"k": "I  Right main landing gear", "a": "Inflation, tire condition, alignment, fuselage skin"},
+        {"k": "L  Right flap and hinges", "a": "Visual"},
+        {"k": "M  Right aileron, trim tab, hinges", "a": "Visual; free of play/friction; right tank vent unobstructed"},
+        {"k": "N  Right leading edge & wing skin", "a": "Visual; Nav/Strobe lights"},
+        {"k": "O  Right fuel filler cap", "a": "Check fuel level visually; drain right tank (water/contaminants); close cap"},
+        {"k": "P  Fuel selector / gascolator", "a": "Selector ON; drain circuit at gascolator; check water/contaminants"},
+        {"k": "Q  Nose wheel strut and tire", "a": "Inflation, tire and rubber shock absorber disc condition"},
+        {"k": "R  Propeller and spinner", "a": "Nicks, cracks, dents; rotates freely; no play blade/hub; taxi/landing light"},
+        {"k": "S  Open engine cowling", "a": "No foreign objects; coolant overflow bottle between MIN/MAX"},
+        {"c": "Only before the first flight of the day"},
+        {"k": "Coolant level in expansion tank", "a": "at least 2/3 (replenish to top)"},
+        {"k": "Turn propeller by hand (engine rotation direction)", "a": "odd noises, resistance, normal compression"},
+        {"k": "Exhaust", "a": "damage, leakage, general condition"},
+        {"c": "Each flight"},
+        {"k": "Radiators", "a": "no leakage; free of obstructions"},
+        {"k": "Oil level", "a": "Lanes OFF, turn prop by hand (or idle 1 min) until air returns to tank; replenish; \"max\" before long flights"},
+        {"k": "Fuel circuit", "a": "inspect for leakage"},
+        {"k": "Silent-block suspensions", "a": "integrity"},
+        {"k": "Air intake system", "a": "connection and integrity; ram air intake unobstructed"},
+        {"k": "All parts", "a": "secured / safetied"},
+        {"k": "T  Close engine cowling", "a": "Cam-locks aligned"},
+        {"k": "V  Tow bar and chocks removed", "a": "Stow on board pitot, static and stall warning covers"}
+      ]
+    },
+    {
+      "id": "n-before-start", "ref": "4.4.1", "t": "Before Starting Engine", "phase": "Ground",
+      "kw": ["before start", "antes partida", "before starting"],
+      "s": [
+        {"k": "Pre-flight inspection", "a": "Complete"},
+        {"k": "Master switch", "a": "ON"},
+        {"k": "Instrument light", "a": "AS REQUIRED"},
+        {"k": "Seat position and safety belts", "a": "Adjust"},
+        {"n": "In absence of RH seat occupant: fasten seat belts around the seat so as to prevent interference with flight controls and with rapid egress.", "t": "note"},
+        {"k": "Flight controls", "a": "Operate full stroke checking smoothness, free of play and friction"},
+        {"k": "Parking brake (left side central pedestal)", "a": "CHECK LOCK"},
+        {"k": "Propeller Lever", "a": "FULL FWD"},
+        {"k": "Landing gear control knob*", "a": "CHECK DOWN - three green lights ON"},
+        {"k": "Throttle Lever", "a": "Check for freedom of movement"},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Lane A and B Switches", "a": "BOTH OFF"},
+        {"k": "Circuit Breakers", "a": "CHECK all IN"},
+        {"k": "Avionic Master", "a": "ON, check instruments and Voltage on Essential Buses"},
+        {"k": "Standby Instrument", "a": "Check no red crosses displayed"},
+        {"k": "Fuel quantity", "a": "Compare indicators with fuel visually checked in the tanks"},
+        {"k": "Annunciator Panel", "a": "PUSH TEST BUTTON and CHECK lights"},
+        {"k": "Alternate Air", "a": "CHECK CLOSED"},
+        {"k": "Flap control", "a": "Cycle fully extended, then set to T/O"},
+        {"k": "Pitch Trim", "a": "Cycle fully up and down, then set to NEUTRAL"},
+        {"k": "Nav & Strobe lights", "a": "ON"},
+        {"k": "Canopy", "a": "Closed and locked"},
+        {"n": "*Applicable for aircraft embodying MOD2002/245.", "t": "note"}
+      ]
+    },
+    {
+      "id": "n-start", "ref": "4.4.2", "t": "Engine Starting", "phase": "Ground",
+      "kw": ["start", "starting", "partida", "motor", "starter"],
+      "s": [
+        {"k": "Fuel selector valve", "a": "Select the tank with less fuel"},
+        {"k": "Propeller area", "a": "Check that area is clear of persons / objects"},
+        {"n": "Forward lower sector visibility is not possible from inside the cockpit. Do not operate the starter for more than 10 seconds; after operating, let it cool down for 2 minutes.", "t": "caution"},
+        {"k": "Main Fuel Pump", "a": "ON"},
+        {"k": "Lane A & B Switches", "a": "ON"},
+        {"k": "Propeller Lever", "a": "FULL FWD"},
+        {"k": "Throttle Lever", "a": "1-2 cm above IDLE"},
+        {"k": "Start power Switch", "a": "HOLD ON"},
+        {"k": "Check: both Lane Warning Lamps illuminate and extinguish after ~3 s", "a": ""},
+        {"k": "Check: fuel pressure stabilized in green arc", "a": ""},
+        {"k": "Starter", "a": "PRESS and RELEASE when engine RPM > 1500 (propeller 620 RPM)"},
+        {"k": "Start Power Switch", "a": "RELEASE"},
+        {"k": "Throttle Lever", "a": "AS REQUIRED"},
+        {"k": "Check: oil pressure rise within 10 seconds", "a": ""},
+        {"k": "Check: Lane A and Lane B Warning lamps OFF", "a": ""},
+        {"n": "If a LANE warning lamp flashes or lights up, perform a Lane check. Both lamps must be deactivated, otherwise there is an error.", "t": "caution"},
+        {"k": "Engine instrument", "a": "CHECK"},
+        {"k": "Throttle Lever", "a": "SET engine to 2500 RPM (propeller 1000 RPM) and hold for 5 sec."},
+        {"k": "Electrical Parameters", "a": "CHECK Essential Bus more than 14 Volt"},
+        {"k": "Throttle Lever", "a": "IDLE"}
+      ]
+    },
+    {
+      "id": "n-warmup", "ref": "4.4.3", "t": "Warm Up", "phase": "Ground",
+      "kw": ["warm up", "aquecimento", "warmup"],
+      "s": [
+        {"k": "Oil Pressure", "a": "CHECK if above 3 bar"},
+        {"k": "Throttle Lever", "a": "SET engine to 2000 RPM (propeller 820 RPM) for 2 minutes"},
+        {"k": "Throttle Lever", "a": "SET engine to 2500 RPM (propeller 1000 RPM)"},
+        {"k": "Oil temperature", "a": "CHECK above 50 °C (120 °F)"},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Engine Parameters", "a": "CHECK"},
+        {"k": "Temperatures and Pressure", "a": "CHECK"}
+      ]
+    },
+    {
+      "id": "n-before-taxi", "ref": "4.4.4", "t": "Before Taxiing", "phase": "Ground",
+      "kw": ["before taxi", "antes táxi"],
+      "s": [
+        {"k": "Flight instruments", "a": "SET AS REQUIRED"},
+        {"k": "Altimeters", "a": "SET"}
+      ]
+    },
+    {
+      "id": "n-taxi", "ref": "4.4.5", "t": "Taxiing", "phase": "Ground",
+      "kw": ["taxi", "táxi", "taxiing"],
+      "s": [
+        {"k": "Parking brake (left side central pedestal)", "a": "Release"},
+        {"k": "Brakes", "a": "Check"},
+        {"k": "Flight Instruments", "a": "Check altimeters"}
+      ]
+    },
+    {
+      "id": "n-before-to", "ref": "4.4.6", "t": "Before Take-off", "phase": "Departure",
+      "kw": ["before takeoff", "before take-off", "run-up", "runup", "antes decolagem", "lane check", "governor", "magneto", "fuel pump check"],
+      "s": [
+        {"k": "Parking brake (left side central pedestal)", "a": "LOCK, then PRESS brake pedal"},
+        {"k": "External Lights", "a": "As Required"},
+        {"k": "Engine Parameters", "a": "CHECK"},
+        {"k": "Fuel Pump", "a": "ON"},
+        {"k": "Fuel Selector", "a": "SELECT the fullest tank"},
+        {"k": "Fuel Pressure", "a": "CHECK"},
+        {"k": "Propeller Lever", "a": "FULL FWD"},
+        {"k": "Throttle Lever", "a": "Short FULL throttle to check MAX engine speed"},
+        {"k": "Throttle Lever", "a": "SET engine to 4000 RPM (propeller 1650 RPM)"},
+        {"c": "Lane and Ignition Check — LANE B CHECK"},
+        {"k": "Lane A Switch", "a": "OFF"},
+        {"k": "Check: engine RPM drop/increase ~250 (propeller ~100); Lane A lamp ON; Lane B lamp OFF; NO CT / EGT / Oil Pressure / Fuel Flow", "a": ""},
+        {"k": "Lane A Switch", "a": "ON"},
+        {"k": "Lane A Warning Light", "a": "Extinguish after around 3 sec."},
+        {"c": "LANE A CHECK"},
+        {"k": "Lane B Switch", "a": "OFF"},
+        {"k": "Check: engine RPM drop/increase ~250; Lane A lamp OFF; Lane B lamp ON; NO Oil temp / Oil Pressure / Fuel Flow", "a": ""},
+        {"k": "Lane B Switch", "a": "ON"},
+        {"k": "Lane B Warning Light", "a": "Extinguish after around 3 sec."},
+        {"k": "Throttle Lever", "a": "SET engine to 2000 RPM (propeller 820 RPM)"},
+        {"c": "Fuel Pump Check"},
+        {"k": "Fuel Pressure", "a": "Check within green arc"},
+        {"k": "Fuel Pump", "a": "OFF for 5 sec."},
+        {"k": "Fuel Pressure", "a": "CHECK within green arc"},
+        {"k": "Fuel Pump", "a": "ON"},
+        {"k": "Main Fuel Pump", "a": "OFF for 5 sec."},
+        {"k": "Fuel Pressure", "a": "CHECK within green arc"},
+        {"k": "Main Fuel Pump", "a": "ON"},
+        {"k": "Throttle Lever", "a": "SET engine to 4300 RPM (propeller 1770 RPM)"},
+        {"c": "Governor Check"},
+        {"k": "Decrease engine speed to 3800 RPM with propeller lever; move Propeller Lever FULL FWD; cycle 3 times", "a": ""},
+        {"k": "Verify governor closely and firmly controls the RPM", "a": ""},
+        {"k": "Alternate Air", "a": "PULL and CHECK Manifold Temperature INCREASE, then PUSH IN"},
+        {"k": "Throttle Lever", "a": "As Required"},
+        {"k": "Alternate Air", "a": "CHECK CLOSED"},
+        {"k": "Pitot heat", "a": "AS REQUIRED"},
+        {"n": "If flight into icing conditions (visible moisture below +5 °C) is anticipated or encountered, ACTIVATE the pitot ice protection system.", "t": "note"},
+        {"k": "Flaps", "a": "CHECK T/O"},
+        {"k": "Pitch Trim", "a": "CHECK NEUTRAL"},
+        {"k": "Flight controls", "a": "CHECK Free"},
+        {"k": "Transponder", "a": "CHECK"},
+        {"k": "Fuel Pumps", "a": "CHECK BOTH ON"},
+        {"k": "Seat Belts", "a": "CHECK Fastened"},
+        {"k": "Canopy", "a": "CHECK closed and locked"}
+      ]
+    },
+    {
+      "id": "n-takeoff", "ref": "4.4.7", "t": "Take-off", "phase": "Departure",
+      "kw": ["takeoff", "take-off", "decolagem"],
+      "s": [
+        {"k": "Parking brake (left side central pedestal)", "a": "Release"},
+        {"k": "Brakes", "a": "Apply"},
+        {"k": "Propeller Lever", "a": "FULL FORWARD"},
+        {"k": "Throttle Lever", "a": "FULL and CHECK approx. 5700 engine RPM (propeller 2350 RPM)"},
+        {"k": "Engine parameters", "a": "Check within the limits"},
+        {"k": "Brakes", "a": "Release"},
+        {"k": "At rotation speed (53 KIAS)", "a": "Rotate"},
+        {"c": "At safe altitude"},
+        {"k": "Flaps", "a": "UP"},
+        {"k": "Landing gear control knob*", "a": "UP: check green lights and red light OFF in about 10 s"},
+        {"n": "Expect to adjust pitch trim (pitch up) when retracting flaps after take-off.", "t": "note"},
+        {"k": "Attitude", "a": "As required for en-route climb"},
+        {"k": "Fuel pump", "a": "OFF"},
+        {"k": "Landing light", "a": "OFF"}
+      ]
+    },
+    {
+      "id": "n-climb", "ref": "4.4.8", "t": "Climb", "phase": "En-route",
+      "kw": ["climb", "subida"],
+      "s": [
+        {"k": "Propeller Lever", "a": "As required"},
+        {"k": "Throttle Lever", "a": "As required"},
+        {"k": "Engine parameters", "a": "In the allowed range"}
+      ]
+    },
+    {
+      "id": "n-cruise", "ref": "4.4.9", "t": "Cruise", "phase": "En-route",
+      "kw": ["cruise", "cruzeiro"],
+      "s": [
+        {"k": "Power", "a": "Set performance as required (Section 5 table)"},
+        {"k": "Fuel tank selector", "a": "As required to maintain symmetric balance"},
+        {"k": "Engine parameters", "a": "Monitor"},
+        {"n": "Switch on the electric fuel pump prior to swapping fuel feed from one tank to another.", "t": "note"}
+      ]
+    },
+    {
+      "id": "n-descent", "ref": "4.4.10", "t": "Descent", "phase": "Arrival",
+      "kw": ["descent", "descida"],
+      "s": [
+        {"k": "Throttle Lever", "a": "AS REQUIRED"},
+        {"k": "Pitot Heat", "a": "AS REQUIRED"},
+        {"k": "Alternate Air", "a": "AS REQUIRED"}
+      ]
+    },
+    {
+      "id": "n-before-ldg", "ref": "4.4.11", "t": "Before Landing", "phase": "Arrival",
+      "kw": ["before landing", "antes pouso", "approach", "aproximação"],
+      "s": [
+        {"k": "Propeller Lever", "a": "FULL FORWARD"},
+        {"k": "Fuel pump", "a": "ON"},
+        {"k": "Fuel selector valve", "a": "Select the fullest tank"},
+        {"k": "Landing Light", "a": "ON"},
+        {"c": "On downwind, abeam touchdown point"},
+        {"k": "Landing gear control knob*", "a": "DOWN: check green lights ON"},
+        {"k": "Flaps", "a": "Set T/O (below 106 KIAS)"},
+        {"n": "Expect to adjust pitch trim (pitch down) when extending flaps to T/O or LAND.", "t": "note"},
+        {"k": "Approach speed", "a": "Set"},
+        {"k": "Flaps", "a": "LAND (below 96 KIAS)"},
+        {"k": "Final Approach Speed", "a": "Set"},
+        {"n": "In conditions such as strong crosswind, gusts, windshear danger or turbulence, select a higher approach speed.", "t": "note"}
+      ]
+    },
+    {
+      "id": "n-goaround", "ref": "4.4.12", "t": "Balked Landing / Go-Around", "phase": "Arrival",
+      "kw": ["go around", "go-around", "balked", "missed approach", "arremetida"],
+      "s": [
+        {"k": "Throttle Lever", "a": "FULL FORWARD"},
+        {"k": "Attitude", "a": "Attain climb speed"},
+        {"c": "Above a safe altitude"},
+        {"k": "Flaps", "a": "UP"},
+        {"k": "Landing gear control knob*", "a": "UP as positive climb is achieved"}
+      ]
+    },
+    {
+      "id": "n-landing", "ref": "4.4.13", "t": "Landing (After Landing)", "phase": "Arrival",
+      "kw": ["landing", "after landing", "pouso", "após pouso"],
+      "s": [
+        {"k": "Throttle Lever", "a": "IDLE at touchdown"},
+        {"k": "Brakes", "a": "Apply"},
+        {"k": "Flaps", "a": "UP"},
+        {"k": "Fuel Pump", "a": "OFF"},
+        {"k": "Pitot Heat", "a": "CHECK OFF"},
+        {"k": "External lights", "a": "As required"},
+        {"k": "Transponder", "a": "As required"}
+      ]
+    },
+    {
+      "id": "n-shutdown", "ref": "4.4.14", "t": "Engine Shutdown", "phase": "Shutdown",
+      "kw": ["shutdown", "shut down", "corte motor", "desligar"],
+      "s": [
+        {"k": "Parking brake (left side central pedestal)", "a": "Set"},
+        {"k": "Throttle Lever", "a": "IDLE"},
+        {"k": "Flaps", "a": "CHECK UP"},
+        {"k": "External lights", "a": "As required"},
+        {"k": "Alternate Air", "a": "CHECK OFF"},
+        {"k": "Lane A & B switches", "a": "OFF"},
+        {"k": "Main Fuel Pump switch", "a": "OFF"},
+        {"k": "All electric/avionic/lights switches", "a": "OFF"},
+        {"k": "Master Switch", "a": "OFF"},
+        {"k": "Fuel Selector", "a": "OFF"},
+        {"n": "For safety, verify propeller is fully stopped before any other action.", "t": "caution"}
+      ]
+    },
+    {
+      "id": "n-postflight", "ref": "4.4.15", "t": "Post-flight Checks", "phase": "Shutdown",
+      "kw": ["post flight", "postflight", "pós-voo", "after flight"],
+      "s": [
+        {"k": "Wheel chocks", "a": "Set"},
+        {"k": "Parking brake (left side central pedestal)", "a": "Release"},
+        {"k": "Canopy", "a": "Close and Lock"},
+        {"k": "Protection covers", "a": "Install"}
+      ]
+    }
+  ]
+}

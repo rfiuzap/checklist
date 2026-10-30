@@ -1,0 +1,37 @@
+# HostGator / cPanel (Apache) — P-Mentor Checklist (site estático)
+DirectoryIndex index.html
+Options -Indexes
+
+# HTTPS obrigatório (Service Worker / PWA só funcionam em HTTPS).
+# Ative o SSL gratuito (AutoSSL / Let's Encrypt) no cPanel antes.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType application/json .json
+  AddType text/javascript .js
+</IfModule>
+
+# O service worker e o HTML nunca devem ficar presos em cache do servidor/navegador.
+<IfModule mod_headers.c>
+  <FilesMatch "^(sw\.js|index\.html|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "same-origin"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
